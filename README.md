@@ -9,32 +9,36 @@ Este projeto nasceu da necessidade de analisar o Grêmio sem filtros. Entre a es
 A proposta é trazer uma visão de "campo", fugindo do óbvio e avaliando:
 
 - Esquemas táticos e substituições.
-    
 - Desempenho individual (Quem merece a titularidade e quem encerrou o ciclo).
-    
 - A evolução física e técnica do elenco.
-    
 
 ## 🛠 Tecnologia
 
 As resenhas são disponibilizadas em páginas web estáticas, focadas em performance e leitura, utilizando:
 
 - **HTML5** Estruturado
-    
 - **Tailwind CSS** para estilização responsiva
-    
 - Integração de vídeos (Compactos e Lances)
-    
+
+## 📂 Estrutura do Projeto
+
+Para organizar melhor o desenvolvimento, separamos o código-fonte dos ativos de mídia e documentação.
+
+```text
+resenha-imortal/
+├── html/        (para os arquivos .html do site)
+├── docs/        (para textos, rascunhos e documentação)
+├── images/      (para logo e fotos dos jogos)
+└── videos/      (para arquivos de vídeo, se houver)
+```
 
 ## 📅 Temporada 2026
 
 ### Última Análise: Grêmio x Juventude (Gauchão)
 
 - **Destaques:** Monsalve (Bucha!), Gabriel Mec.
-    
 - **Pontos Críticos:** Expulsão de Arthur, improvisação de Pavón na lateral.
-    
 - **Veredito:** O time precisa de alma ou o fantasma da casamata volta a assombrar.
-    
 
+---
 _Desenvolvido por Humba • Da Arena do Humaitá para o Mundo._
