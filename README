@@ -1,0 +1,39 @@
+# 🇪🇪 Resenha Imortal - Análise de Campo
+
+Bem-vindo ao repositório oficial do **Resenha Imortal**. Aqui publico análises pós-jogo, resenhas táticas e avaliações individuais do elenco do Grêmio na temporada 2026.
+
+## 🚀 Acesso Rápido (GitHub Pages)
+
+Acesse as análises publicadas diretamente no seu navegador:
+
+- 🏠 **Página Inicial:** [Acessar Home](https://humba-ifsc.github.io/resenha-imortal/)
+- 📝 **Resenha: Grêmio x Juventude:** [Ver Análise de Campo](https://humba-ifsc.github.io/resenha-imortal/html/resenha_gremio-juventude.html)
+
+## ⚽ Sobre o Projeto
+
+Este projeto nasceu da necessidade de analisar o Grêmio sem filtros. Entre a esperança da **Reconstrução** e o medo da **Terra Arrasada**, acompanhamos jogo a jogo o trabalho do técnico **Luis Castro**.
+
+A proposta é trazer uma visão de "campo", fugindo do óbvio e avaliando:
+
+- Esquemas táticos e substituições.
+- Desempenho individual (Quem merece a titularidade e quem encerrou o ciclo).
+- A evolução física e técnica do elenco.
+
+## 🛠 Tecnologia
+
+As resenhas são disponibilizadas em páginas web estáticas, focadas em performance e leitura, utilizando:
+
+- **HTML5** Estruturado
+- **Tailwind CSS** para estilização responsiva
+- Integração de vídeos (Compactos e Lances)
+
+## 📂 Estrutura do Projeto
+
+Para organizar melhor o desenvolvimento, separamos o código-fonte dos ativos de mídia e documentação.
+
+```text
+resenha-imortal/
+├── html/        (para os arquivos .html do site, como as resenhas dos jogos)
+├── docs/        (para textos, rascunhos e documentação do projeto)
+├── images/      (para logo e fotos dos jogos)
+└── videos/      (para arquivos de vídeo, se houver)
