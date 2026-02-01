@@ -73,24 +73,29 @@
 </head>
 <body>
 
-    <!-- Navegação Superior -->
-    <nav class="bg-gremio-black text-white p-4 sticky top-0 z-50 shadow-2xl border-b border-white/10">
-        <div class="container mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-4">
-                <!-- Logo Grêmio (Caminho ajustado para a pasta imagens) -->
-                <img src="imagens/logo-gremio.png" alt="Grêmio FBPA" class="h-12 w-auto object-contain">
-                <div class="flex flex-col border-l border-white/20 pl-4">
-                    <span class="font-black text-xl tracking-tighter uppercase leading-none">Resenha Imortal</span>
-                    <span class="text-[9px] text-gremio-blue font-bold tracking-[0.3em] uppercase">Análise de Campo • Por Humba</span>
-                </div>
+<!-- Navegação Superior - PÁGINA INTERNA (Corrigido) -->
+<nav class="bg-gremio-black text-white p-4 sticky top-0 z-50 shadow-2xl border-b border-white/10">
+    <div class="container mx-auto flex justify-between items-center">
+        
+        <!-- Lado Esquerdo: Link para a Home do Site -->
+        <a href="https://humba-ifsc.github.io/resenha-imortal/" class="flex items-center gap-4 hover:opacity-80 transition-opacity" title="Voltar para o Início">
+            <!-- Caminho corrigido para a pasta 'imagens' (voltando um nível) -->
+            <img src="../imagens/logo-gremio.png" alt="Grêmio FBPA" class="h-12 w-auto object-contain">
+            <div class="flex flex-col border-l border-white/20 pl-4">
+                <span class="font-black text-xl tracking-tighter uppercase leading-none">Resenha Imortal</span>
+                <span class="text-[9px] text-gremio-blue font-bold tracking-[0.3em] uppercase">Análise de Campo • Por Humba</span>
             </div>
-            <div class="hidden sm:block">
-                <a href="https://github.com/humba/resenha-imortal" target="_blank" class="text-[10px] font-bold opacity-50 hover:opacity-100 uppercase tracking-widest transition-opacity">
-                    Acessar Repositório GitHub ↗
-                </a>
-            </div>
+        </a>
+
+        <!-- Lado Direito: Link para o Repositório GitHub -->
+        <div class="hidden sm:block">
+            <a href="https://github.com/Humba-IFSC/resenha-imortal" target="_blank" class="text-[10px] font-bold opacity-50 uppercase tracking-widest hover:text-gremio-blue hover:opacity-100 transition-all">
+                Resenha Imortal - GitHub Repo
+            </a>
         </div>
-    </nav>
+
+    </div>
+</nav>
 
     <!-- Hero Section (Baseado no README) -->
     <header class="hero-pattern text-white py-20 px-4">
