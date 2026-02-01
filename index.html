@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resenha Imortal - Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gremio-blue: #00ADEF;
+            --gremio-black: #111111;
+            --fendi: #A3937B;
+            --creme: #FDFCF8;
+            --fendi-dark: #7D6E57;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--creme);
+            color: #1a1a1a;
+        }
+
+        .bg-gremio-blue { background-color: var(--gremio-blue); }
+        .bg-gremio-black { background-color: var(--gremio-black); }
+        .text-gremio-blue { color: var(--gremio-blue); }
+        
+        .hero-pattern {
+            background-color: #000000;
+            background-image: linear-gradient(135deg, #00ADEF 0%, #000000 80%);
+            border-bottom: 5px solid var(--gremio-blue);
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(163, 147, 123, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .badge-tag {
+            background-color: var(--gremio-blue);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 10px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Estilo para a árvore de diretórios */
+        .tree-structure {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--gremio-blue);
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: var(--gremio-blue); border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+    <!-- Navegação Superior -->
+    <nav class="bg-gremio-black text-white p-4 sticky top-0 z-50 shadow-2xl border-b border-white/10">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <!-- Logo Grêmio (Caminho ajustado para a pasta images) -->
+                <img src="images/logo-gremio.png" alt="Grêmio FBPA" class="h-12 w-auto object-contain">
+                <div class="flex flex-col border-l border-white/20 pl-4">
+                    <span class="font-black text-xl tracking-tighter uppercase leading-none">Resenha Imortal</span>
+                    <span class="text-[9px] text-gremio-blue font-bold tracking-[0.3em] uppercase">Análise de Campo • Por Humba</span>
+                </div>
+            </div>
+            <div class="hidden sm:block">
+                <a href="https://github.com/humba/resenha-imortal" target="_blank" class="text-[10px] font-bold opacity-50 hover:opacity-100 uppercase tracking-widest transition-opacity">
+                    Acessar Repositório GitHub ↗
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section (Baseado no README) -->
+    <header class="hero-pattern text-white py-20 px-4">
+        <div class="container mx-auto text-center max-w-4xl">
+            <div class="inline-block bg-white/10 backdrop-blur-md px-4 py-1 rounded-full text-gremio-blue font-black text-sm mb-6 border border-white/20 uppercase tracking-widest">
+                Temporada 2026
+            </div>
+            <h1 class="text-5xl md:text-7xl font-black mb-6 uppercase italic tracking-tighter leading-none">
+                Resenha <span class="text-gremio-blue">Imortal</span>
+            </h1>
+            <p class="text-xl md:text-2xl opacity-90 font-medium leading-relaxed text-gray-200 mb-8">
+                Análises pós-jogo, resenhas táticas e avaliações individuais do elenco do Grêmio. Sem filtros.
+            </p>
+            <div class="flex justify-center gap-4">
+                <a href="#ultimas-analises" class="bg-gremio-blue text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-blue-600 transition uppercase tracking-wider text-sm">
+                    Ver Últimas Análises
+                </a>
+                <a href="#sobre" class="bg-transparent border border-white/30 text-white font-bold py-3 px-8 rounded-full hover:bg-white/10 transition uppercase tracking-wider text-sm">
+                    Sobre o Projeto
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 -mt-10 pb-20 relative z-10">
+
+        <!-- Seção: Última Análise (Destaque) -->
+        <div id="ultimas-analises" class="mb-16">
+            <h2 class="text-gremio-black font-black text-2xl uppercase tracking-tighter mb-6 flex items-center gap-3">
+                <span class="bg-gremio-blue w-2 h-8 block"></span>
+                Última Análise Publicada
+            </h2>
+
+            <!-- CARD DO JOGO: Linkando para o arquivo na pasta HTML -->
+            <a href="html/resenha_gremio.html" class="block group">
+                <div class="card p-0 overflow-hidden border-2 border-transparent group-hover:border-gremio-blue transition-all">
+                    <div class="grid md:grid-cols-3">
+                        <!-- Imagem/Thumbnail -->
+                        <div class="bg-gray-200 h-48 md:h-auto relative">
+                            <img src="images/bucha-monsalve.png" alt="Grêmio x Juventude" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                            <div class="absolute inset-0 bg-gremio-blue/20 group-hover:bg-transparent transition-all"></div>
+                            <span class="absolute top-4 left-4 badge-tag">Campeonato Gaúcho</span>
+                        </div>
+                        
+                        <!-- Conteúdo -->
+                        <div class="p-8 md:col-span-2 flex flex-col justify-center">
+                            <h3 class="text-3xl font-black uppercase italic mb-2 text-gremio-black group-hover:text-gremio-blue transition-colors">
+                                Grêmio x Juventude
+                            </h3>
+                            <p class="text-gray-600 mb-4 line-clamp-2">
+                                O time precisa de alma ou o fantasma da casamata volta a assombrar. Análise sobre a expulsão de Arthur, a invenção na lateral e o golaço de Monsalve.
+                            </p>
+                            <div class="flex items-center gap-4 text-xs font-bold text-gray-400 uppercase tracking-widest">
+                                <span>Destaques: Monsalve, Gabriel Mec</span>
+                                <span class="text-gremio-blue group-hover:underline">Ler Resenha Completa →</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12">
+            
+            <!-- Coluna Esquerda: Sobre o Projeto (Do README) -->
+            <div id="sobre" class="space-y-8">
+                <div class="card p-8 border-t-8 border-gremio-black">
+                    <h3 class="text-xl font-black uppercase tracking-tight mb-4 text-gremio-blue">Sobre o Projeto</h3>
+                    <div class="prose text-gray-700 text-sm leading-relaxed space-y-4">
+                        <p>
+                            Este projeto nasceu da necessidade de analisar o Grêmio sem filtros. Entre a esperança da <strong>Reconstrução</strong> e o medo da <strong>Terra Arrasada</strong>, acompanhamos jogo a jogo o trabalho do técnico <strong>Luis Castro</strong>.
+                        </p>
+                        <p>
+                            A proposta é trazer uma visão de "campo", fugindo do óbvio e avaliando:
+                        </p>
+                        <ul class="list-disc list-inside space-y-1 ml-2 font-medium text-gray-800">
+                            <li>Esquemas táticos e substituições.</li>
+                            <li>Desempenho individual (Quem merece a titularidade).</li>
+                            <li>A evolução física e técnica do elenco.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card p-8">
+                    <h3 class="text-xl font-black uppercase tracking-tight mb-4 text-fendi">Tecnologia</h3>
+                    <p class="text-gray-600 text-sm mb-4">
+                        As resenhas são disponibilizadas em páginas web estáticas, focadas em performance e leitura, utilizando:
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded text-xs font-bold uppercase">HTML5 Estruturado</span>
+                        <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded text-xs font-bold uppercase">Tailwind CSS</span>
+                        <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded text-xs font-bold uppercase">Vídeos Integrados</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coluna Direita: Estrutura do Repositório -->
+            <div>
+                <div class="card p-8 bg-gray-50 border border-gray-200">
+                    <h3 class="text-xl font-black uppercase tracking-tight mb-6 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-gremio-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
+                        Estrutura do Repositório
+                    </h3>
+                    <p class="text-sm text-gray-600 mb-4">
+                        O projeto está organizado em diretórios específicos para separar o código do site, a documentação e os arquivos de mídia.
+                    </p>
+                    
+                    <div class="tree-structure shadow-inner">
+resenha-imortal/
+├── <span class="text-gremio-blue font-bold">html/</span>        (Arquivos .html do site)
+├── <span class="text-fendi font-bold">docs/</span>        (Textos, rascunhos)
+├── <span class="text-purple-600 font-bold">images/</span>      (Logo e fotos)
+└── <span class="text-red-500 font-bold">videos/</span>      (Arquivos de vídeo)
+                    </div>
+
+                    <div class="mt-6 pt-6 border-t border-gray-200">
+                        <p class="text-xs text-center text-gray-400 font-bold uppercase tracking-widest">
+                            Desenvolvido por Humba • Da Arena do Humaitá para o Mundo
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-20 text-center border-t border-gray-200 pt-16">
+            <div class="max-w-2xl mx-auto">
+                <img src="images/logo-gremio.png" alt="Grêmio Logo" class="h-16 mx-auto mb-8 opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
+                <div class="flex justify-center gap-6 text-[11px] font-black uppercase text-gremio-blue tracking-[0.2em] opacity-60">
+                    <span>#Gremio</span>
+                    <span>#ResenhaImortal</span>
+                    <span>#HumbaAnalise</span>
+                </div>
+                <p class="mt-8 text-[10px] text-gray-400 font-bold uppercase tracking-widest">© 2026 Resenha Imortal - GitHub Pages</p>
+            </div>
+        </footer>
+
+    </main>
+
+</body>
+</html>
