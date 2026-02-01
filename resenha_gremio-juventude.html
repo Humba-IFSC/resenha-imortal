@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resenha Imortal - Análise de Campo por Humba</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gremio-blue: #00ADEF;
+            --gremio-black: #111111;
+            --fendi: #A3937B;
+            --creme: #FDFCF8;
+            --fendi-dark: #7D6E57;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--creme);
+            color: #1a1a1a;
+        }
+
+        .bg-gremio-blue { background-color: var(--gremio-blue); }
+        .bg-gremio-black { background-color: var(--gremio-black); }
+        .text-gremio-blue { color: var(--gremio-blue); }
+        
+        .hero-pattern {
+            background-color: #000000;
+            background-image: linear-gradient(135deg, #00ADEF 0%, #000000 80%);
+            border-bottom: 5px solid var(--gremio-blue);
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(163, 147, 123, 0.1);
+        }
+
+        /* Moldura para a imagem do golo do Monsalve */
+        .compacto-box {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .compacto-box:hover {
+            border-color: var(--gremio-blue);
+            transform: translateY(-2px);
+        }
+
+        .compacto-overlay {
+            background: linear-gradient(transparent, rgba(0,0,0,0.95));
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            background-color: #000;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .badge-status {
+            background-color: var(--fendi);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 900;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        
+        .badge-status:hover {
+            opacity: 0.8;
+        }
+
+        /* Modal Styles */
+        #modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: var(--gremio-blue); border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+    <!-- Navegação Superior -->
+    <nav class="bg-gremio-black text-white p-4 sticky top-0 z-50 shadow-2xl border-b border-white/10">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <!-- Logo Grêmio fixado ao lado do texto -->
+                <img src="logo-gremio.png" alt="Grêmio FBPA" class="h-12 w-auto object-contain">
+                <div class="flex flex-col border-l border-white/20 pl-4">
+                    <span class="font-black text-xl tracking-tighter uppercase leading-none">Resenha Imortal</span>
+                    <span class="text-[9px] text-gremio-blue font-bold tracking-[0.3em] uppercase">Análise de Campo • Por Humba</span>
+                </div>
+            </div>
+            <div class="hidden sm:block">
+                <span class="text-[10px] font-bold opacity-50 uppercase tracking-widest">Resenha Imortal - GitHub Repo</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section: Texto + Imagem do Gol Monsalve -->
+    <header class="hero-pattern text-white py-12 md:py-20 px-4">
+        <div class="container mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Lado Esquerdo: Título e Resumo -->
+                <div class="text-center lg:text-left">
+                    <div class="inline-block bg-white/10 backdrop-blur-md px-4 py-1 rounded-full text-gremio-blue font-black text-sm mb-6 border border-white/20 uppercase tracking-widest">
+                        Campeonato Gaúcho 2026
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-black mb-6 uppercase italic tracking-tighter leading-none">
+                        Grêmio <span class="text-gremio-blue">x</span> Juventude
+                    </h1>
+                    <p class="text-lg md:text-xl opacity-90 font-medium leading-relaxed italic text-gray-200">
+                        "Entre a esperança de um novo ciclo e a angústia de invenções que o campo não aceita: o grito da arquibancada sobre um Grêmio que ainda busca a sua alma."
+                    </p>
+                </div>
+
+                <!-- Lado Direito: Imagem do Golo Monsalve com Frame Embutido -->
+                <div id="video-placeholder" class="max-w-xl mx-auto lg:mr-0 w-full">
+                    <div onclick="loadVideo()" class="compacto-box group">
+                        <!-- Imagem do Golo do Monsalve (Bucha) - PNG -->
+                        <img src="bucha-monsalve.png" alt="Gol do Monsalve" class="w-full h-72 object-cover object-center">
+                        
+                        <div class="absolute inset-0 compacto-overlay flex flex-col justify-end p-6">
+                            <div class="text-center">
+                                <span class="inline-block mb-3 bg-gremio-blue text-white text-[10px] font-black px-4 py-1.5 rounded-full shadow-lg shadow-blue-500/50">CLIQUE PARA ASSISTIR O COMPACTO</span>
+                                <h3 class="text-2xl md:text-3xl font-black italic uppercase tracking-tighter">Que bucha!</h3>
+                                <p class="text-[11px] font-bold opacity-80 tracking-widest mt-1 uppercase">
+                                    Que bucha! - Créditos: Canal Start Sports
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Ícone Play Central (Hover) -->
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="bg-white/20 backdrop-blur-md p-5 rounded-full border border-white/30">
+                                <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M4.5 2.688l11.012 7.312-11.012 7.312v-14.624z" /></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 mt-12 pb-20">
+        
+        <div class="grid lg:grid-cols-12 gap-8 mb-16">
+            
+            <div class="lg:col-span-8 space-y-8">
+                <div class="card p-8 border-l-8 border-gremio-blue">
+                    <h2 class="text-3xl font-black uppercase tracking-tight mb-6 flex items-center gap-3">
+                        <svg class="w-6 h-6 text-gremio-blue" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" /><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" /></svg>
+                        O Segundo Tempo e a Invenção
+                    </h2>
+                    <div class="text-gray-700 leading-relaxed space-y-4 text-lg">
+                        <p>O time foi mexido radicalmente no início do segundo tempo com 4 trocas: <strong>Amuzu, Carlos Vinícius, Arthur e Monsalve</strong>. Parecia a formação ideal para mudar o jogo, mas o destino foi implacável.</p>
+                        
+                        <p class="bg-gray-50 p-6 border-r-4 border-fendi italic text-gray-600 rounded">
+                            "A expulsão de Arthur logo aos 4 minutos prejudicou todo o esquema de modificações. O Grêmio perdeu seu articulador e o equilíbrio do jogo."
+                        </p>
+
+                        <p>A entrada de <strong>Gabriel Mec</strong> no lugar de Marcos Rocha, deslocando o <strong>Pavón</strong> para a lateral direita, soou como mais uma invenção tática difícil de digerir. Por que não João Pedro? A pergunta ecoa na Arena.</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="card p-6 bg-white border-b-4 border-gremio-blue">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="font-black text-xl uppercase tracking-tighter">Monsalve</h3>
+                            <span class="badge-status bg-gremio-blue">Titular Absoluto</span>
+                        </div>
+                        <p class="text-sm text-gray-600 leading-relaxed">Voltou do DM com categoria. O gol foi pura classe, mas a "fominha" em outra chance clara impediu uma assistência que seria gol certo. Falta coletividade para coroar o talento.</p>
+                    </div>
+                    <div class="card p-6 bg-white border-b-4 border-fendi">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="font-black text-xl uppercase tracking-tighter">Gabriel Mec</h3>
+                            <span class="badge-status bg-fendi">Sob Observação</span>
+                        </div>
+                        <p class="text-sm text-gray-600 leading-relaxed">Terceiro jogo seguido em que o alarde europeu não se traduz em campo. Entrou sem força, "sem pulmões". Comparado ao Endrick, o abismo físico e técnico hoje é nítido.</p>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="lg:col-span-4 space-y-6">
+                <div class="card overflow-hidden bg-gremio-black text-white border border-white/10">
+                    <div class="p-6">
+                        <h4 class="font-black text-lg mb-4 text-gremio-blue uppercase tracking-widest border-b border-white/10 pb-2 text-center text-gremio-blue">Gabriel Grando</h4>
+                        <p class="text-xs italic text-gray-400 mb-4 leading-relaxed text-center">
+                            "Tomou um gol similar ao do Weverton. Para um Grêmio Copeiro, precisamos de um goleiro que decida lá atrás."
+                        </p>
+                        <div class="flex items-center gap-2">
+                            <div class="flex-1 h-1 bg-white/10 rounded-full overflow-hidden">
+                                <div class="bg-fendi h-full w-1/4"></div>
+                            </div>
+                            <span class="text-[9px] font-bold text-fendi">NÍVEL DE CONFIANÇA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seção Ciclo Encerrado com Modais -->
+                <div class="card p-6 bg-white shadow-lg">
+                    <h3 class="font-black text-sm uppercase tracking-widest mb-4 border-b border-fendi/20 pb-2">Ciclo Encerrado?</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center justify-between border-b border-gray-50 pb-2">
+                            <span class="text-sm font-bold text-gray-700 italic">Marcos Rocha</span>
+                            <span onclick="openResenhaModal('Marcos Rocha', 'Não adianta insistir. Jogador de ciclo encerrado que ocupa espaço e folha salarial sem entregar a intensidade necessária para o time principal do Grêmio.')" class="badge-status">FORA</span>
+                        </li>
+                        <li class="flex items-center justify-between border-b border-gray-50 pb-2">
+                            <span class="text-sm font-bold text-gray-700 italic">Caio Paulista</span>
+                            <span onclick="openResenhaModal('Caio Paulista', 'Fraquíssimo. Teve cãibras aos 36 minutos do segundo tempo (apenas 26 min de bola rolando). Falta total de preparação física e técnica para um lateral do nosso nível.')" class="badge-status">FRAQUÍSSIMO</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span class="text-sm font-bold text-gray-700 italic">Pavón na Lateral</span>
+                            <span onclick="openResenhaModal('Pavón (Lateral)', 'Invenção de Professor Pardal. Deslocar um ponta para a lateral quando se tem o João Pedro no banco é o tipo de improvisação que desequilibra o esquema tático e queima o jogador.')" class="badge-status">NÃO INVENTA</span>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+
+        <section class="grid md:grid-cols-2 gap-8 mb-16">
+            <div class="card p-10 bg-gray-900 text-white border-t-8 border-fendi">
+                <h3 class="text-2xl font-black mb-4 uppercase text-fendi tracking-tighter">01. Terra Arrasada</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Luis Castro como "Professor Pardal". Se o Arsenal dele é o que vimos hoje — futebol horizontal e sem objetividade — estaremos em apuros sérios.</p>
+            </div>
+            <div class="card p-10 bg-white border-t-8 border-gremio-blue">
+                <h3 class="text-2xl font-black mb-4 uppercase text-gremio-blue tracking-tighter">02. Reconstrução</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">O Gauchão como laboratório. O Mano não deixou legado e o Castro está em triagem. É preciso paciência com a forma física.</p>
+            </div>
+        </section>
+
+        <footer class="mt-10 text-center border-t border-gray-200 pt-16">
+            <div class="max-w-2xl mx-auto">
+                <img src="logo-gremio.png" alt="Grêmio Logo" class="h-16 mx-auto mb-8 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                <h4 class="text-3xl font-black italic mb-8 uppercase tracking-tighter">"Ou o time ganha alma, ou o fantasma da casamata volta a assombrar."</h4>
+                <div class="flex justify-center gap-6 text-[11px] font-black uppercase text-gremio-blue tracking-[0.2em] opacity-60">
+                    <span>#Gremio</span>
+                    <span>#ResenhaImortal</span>
+                    <span>#HumbaAnalise</span>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- Modal Overlay -->
+    <div id="modal-overlay" onclick="closeModal(event)">
+        <div id="modal-content" class="bg-white rounded-xl shadow-2xl max-w-md w-full p-8 relative border-t-8 border-gremio-blue" onclick="event.stopPropagation()">
+            <button onclick="closeModal(event)" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl font-bold">&times;</button>
+            <h3 id="modal-title" class="text-2xl font-black uppercase tracking-tighter mb-4 text-gremio-black"></h3>
+            <p id="modal-text" class="text-gray-700 leading-relaxed italic border-l-4 border-fendi pl-4"></p>
+            <div class="mt-8 flex justify-end">
+                <button onclick="closeModal(event)" class="bg-gremio-black text-white px-6 py-2 rounded font-bold text-xs uppercase tracking-widest hover:bg-gremio-blue transition">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Corrigido: Agora funciona com o ID solicitado -->
+    <script>
+        function loadVideo() {
+            const container = document.getElementById('video-placeholder');
+            
+            // ID do vídeo solicitado por você
+            const videoId = "3le6qTEPY-Q"; 
+            
+            // URL corrigida com o endereço completo do YouTube
+            const embedUrl = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&rel=0";
+
+            container.innerHTML = `
+                <div class="video-container shadow-2xl border-2 border-gremio-blue">
+                    <iframe 
+                        width="100%" 
+                        height="100%" 
+                        src="${embedUrl}" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            `;
+        }
+
+        function openResenhaModal(title, text) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-text').innerText = text;
+            document.getElementById('modal-overlay').style.display = 'flex';
+        }
+
+        function closeModal(e) {
+            document.getElementById('modal-overlay').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
